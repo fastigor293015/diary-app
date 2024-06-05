@@ -1,0 +1,25 @@
+.calendar {
+  position: relative;
+}
+
+.input {
+  height: 60px;
+  width: 100%;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 300;
+  background: var(--bw-white);
+  box-shadow: var(--shadow);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  padding: 3px;
+  background: var(--bw-white);
+  transform: translateY(-50%);
+  color: var(--bw-gray-40);
+  pointer-events: none;
+}

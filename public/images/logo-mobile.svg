@@ -1,0 +1,32 @@
+<svg width="80.000000" height="80.000000" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_60_234_dd" x="0.000000" y="0.000000" width="80.000000" height="80.000000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="0" dy="0"/>
+			<feGaussianBlur stdDeviation="3.33333"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+		<clipPath id="clip60_235">
+			<rect width="36.000000" height="36.000000" transform="translate(22.000000 22.000000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient id="paint_linear_60_234_0" x1="30.500000" y1="27.000015" x2="70.000000" y2="70.000015" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFF76A"/>
+			<stop offset="1.000000" stop-color="#FFCE89"/>
+		</linearGradient>
+	</defs>
+	<g filter="url(#filter_60_234_dd)">
+		<rect rx="12.000000" width="60.000000" height="60.000000" transform="translate(10.000000 10.000000)" fill="url(#paint_linear_60_234_0)" fill-opacity="1.000000"/>
+		<rect width="36.000000" height="36.000000" transform="translate(22.000000 22.000000)" fill="#FFFFFF" fill-opacity="0"/>
+		<g clip-path="url(#clip60_235)">
+			<path d="M40.02 30.49C40.06 30.35 40.12 30.21 40.2 30.09C40.29 29.97 40.4 29.87 40.52 29.79C40.65 29.72 40.79 29.66 40.94 29.64C41.08 29.62 41.23 29.62 41.38 29.65C42.46 29.91 43.45 30.46 44.23 31.25C45.02 32.03 45.57 33.02 45.83 34.1C45.9 34.39 45.85 34.7 45.7 34.95C45.54 35.21 45.29 35.39 45 35.46C44.71 35.53 44.4 35.48 44.15 35.32C43.89 35.16 43.71 34.91 43.64 34.62C43.48 33.95 43.14 33.33 42.64 32.84C42.15 32.35 41.53 32 40.86 31.84C40.57 31.78 40.32 31.59 40.16 31.34C40 31.09 39.95 30.78 40.02 30.49Z" fill="#1E2022" fill-opacity="1.000000" fill-rule="nonzero"/>
+			<path d="M29.5 35.5C29.5 32.71 30.6 30.04 32.57 28.07C34.54 26.1 37.21 25 40 25C42.78 25 45.45 26.1 47.42 28.07C49.39 30.04 50.5 32.71 50.5 35.5C50.5 38.53 49.49 41.85 47.72 44.43C46.16 46.71 43.91 48.53 41.12 48.92L41.12 49.37C41.12 49.99 41.62 50.5 42.25 50.5L47.12 50.5C47.56 50.5 48 50.58 48.41 50.75C48.82 50.92 49.19 51.17 49.51 51.48C49.82 51.8 50.07 52.17 50.24 52.58C50.41 52.99 50.5 53.43 50.5 53.87L50.5 55.37C50.5 55.67 50.38 55.95 50.17 56.17C49.95 56.38 49.67 56.5 49.37 56.5C49.07 56.5 48.79 56.38 48.57 56.17C48.36 55.95 48.25 55.67 48.25 55.37L48.25 53.87C48.25 53.57 48.13 53.29 47.92 53.07C47.7 52.86 47.42 52.75 47.12 52.75L42.25 52.75C41.35 52.75 40.49 52.39 39.86 51.76C39.23 51.12 38.87 50.27 38.87 49.37L38.87 48.92C36.08 48.53 33.83 46.71 32.27 44.43C30.5 41.85 29.5 38.53 29.5 35.5ZM40 27.25C37.81 27.25 35.71 28.11 34.16 29.66C32.61 31.21 31.75 33.31 31.75 35.5C31.75 38.08 32.62 40.96 34.12 43.16C35.64 45.36 37.67 46.75 40 46.75C42.32 46.75 44.35 45.36 45.87 43.16C47.38 40.95 48.25 38.08 48.25 35.5C48.25 33.31 47.38 31.21 45.83 29.66C44.28 28.11 42.18 27.25 40 27.25Z" fill="#1E2022" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,25 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 10px;
+  font-weight: 900;
+  background: var(--yellow-primary);
+  box-shadow: var(--shadow);
+}
+
+.btn.default {
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 14px;
+  line-height: 1.286;
+  font-weight: 500;
+  color: var(--bw-gray-60);
+  background: none;
+  box-shadow: none;
+}
+
+.btn.secondary {
+  background: var(--bw-gray-5);
+}

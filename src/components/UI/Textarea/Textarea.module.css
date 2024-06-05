@@ -1,0 +1,23 @@
+.textarea {
+  padding: 16px;
+  border: 1px solid var(--bw-white);
+  border-radius: 12px;
+  font-weight: 300;
+  color: inherit;
+  background: var(--bw-white);
+  box-shadow: var(--shadow);
+  resize: none;
+  transition: border-color .2s ease-in-out;
+}
+
+.textarea:hover {
+  border-color: var(--bw-gray-10);
+}
+
+.textarea:focus {
+  border-color: var(--bw-gray-20);
+}
+
+.textarea::placeholder {
+  color: var(--bw-gray-60);
+}

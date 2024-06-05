@@ -1,0 +1,14 @@
+.notesEmpty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  height: 100%;
+  padding: 20px 0;
+}
+
+.addNoteBtn {
+  padding-left: 20px;
+  padding-right: 20px;
+}

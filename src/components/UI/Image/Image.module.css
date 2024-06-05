@@ -1,0 +1,25 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 18px;
+  color: var(--bw-gray-40);
+  background: var(--yellow-light-40);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  cursor: pointer;
+  transition: color .2s ease-in-out, background .2s ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  color: var(--bw-gray-60);
+  background: var(--yellow-light-60);
+}
+
+.btn:active {
+  color: var(--bw-gray-60);
+  background: var(--yellow-dark-1);
+}
