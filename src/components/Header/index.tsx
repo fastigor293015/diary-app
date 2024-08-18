@@ -1,13 +1,10 @@
-import Button from "@components/UI/Button";
-import Edit from "@components/UI/icons/EditIcon";
-import styles from "./Header.module.css";
-import Logo from "@components/UI/Logo";
-import useCurPage from "@hooks/useCurPage";
+import { useCurPage } from "@hooks";
 import { Pages } from "@constants";
+import styles from "./Header.module.css";
+import { Button, Logo } from "@components/UI";
+import { EditIcon } from "@components/UI/icons";
 
-interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
-
-}
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
 const Header: React.FC<HeaderProps> = (props) => {
   const { page, redirect } = useCurPage();
@@ -15,12 +12,11 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <header className={styles.header} {...props}>
       <Logo onClick={() => redirect(Pages.main)} />
-      {page === Pages.main && <Button
-        icon={Edit}
-        onClick={() => redirect(Pages.createNote)}
-      />}
+      {page === Pages.main && (
+        <Button icon={EditIcon} onClick={() => redirect(Pages.createNote)} />
+      )}
     </header>
   );
-}
+};
 
 export default Header;

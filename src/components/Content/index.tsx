@@ -1,10 +1,10 @@
-import useCurPage from "@hooks/useCurPage";
-import Button from "@components/UI/Button";
-import EditIcon from "@components/UI/icons/EditIcon";
+import { useCurPage } from "@hooks";
+import { Button } from "@components/UI";
+import { EditIcon } from "@components/UI/icons";
 import { Pages } from "@constants";
 import styles from "./Content.module.css";
 
-interface ContentProps extends React.HTMLAttributes<HTMLElement> { }
+interface ContentProps extends React.HTMLAttributes<HTMLElement> {}
 
 const Content: React.FC<ContentProps> = (props) => {
   const { redirect } = useCurPage();
@@ -20,6 +20,6 @@ const Content: React.FC<ContentProps> = (props) => {
       />
     </section>
   );
-}
+};
 
 export default Content;

@@ -1,15 +1,30 @@
 .btn {
+  --bg: var(--yellow-primary);
+  --bg-hover: var(--yellow-dark-1);
+  --bg-active: var(--yellow-dark-2);
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 18px;
   border-radius: 10px;
   font-weight: 900;
-  background: var(--yellow-primary);
+  background: var(--bg);
   box-shadow: var(--shadow);
+  transition: background 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: var(--bg-hover);
+}
+
+.btn:active {
+  background: var(--bg-active);
 }
 
 .btn.default {
+  --bg: none;
+  --bg-hover: none;
+  --bg-active: none;
   gap: 8px;
   padding: 8px 0;
   font-size: 14px;
@@ -21,5 +36,15 @@
 }
 
 .btn.secondary {
-  background: var(--bw-gray-5);
+  --bg: var(--bw-gray-5);
+  --bg-hover: var(--bw-gray-10);
+  --bg-active: var(--bw-gray-20);
 }
+
+/* .btn.secondary:hover {
+  background: var(--bw-gray-10);
+}
+
+.btn.secondary:active {
+  background: var(--bw-gray-20);
+} */

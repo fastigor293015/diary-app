@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useEffect, useRef, useState } from "react";
+import { PropsWithChildren, RefObject, createContext, useEffect, useRef, useState } from "react";
 import { EmojiValue } from "@components/UI/Selector";
 
 interface IValues {
@@ -18,6 +18,7 @@ interface IAddNoteContext {
   isModalVisible: boolean;
   onModalOpen: () => void;
   onModalClose: () => void;
+  imageFieldRef: RefObject<HTMLButtonElement> | null;
 }
 
 const initialData: IValues = {
@@ -37,12 +38,14 @@ export const AddNoteContext = createContext<IAddNoteContext>({
   isModalVisible: false,
   onModalOpen: () => { },
   onModalClose: () => { },
+  imageFieldRef: null,
 });
 
 export const AddNoteProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [values, setValues] = useState<IValues>(initialData);
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const imageFieldRef = useRef<HTMLButtonElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const DATA_KEY = "eHRAUsFYWhGdP9ji_addNoteData";
@@ -78,6 +81,7 @@ export const AddNoteProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const onModalClose = () => {
     setIsVisible(false);
+    imageFieldRef.current?.focus();
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setIsOpen(false), 200);
   }
@@ -91,6 +95,7 @@ export const AddNoteProvider: React.FC<PropsWithChildren> = ({ children }) => {
       isModalVisible: isVisible,
       onModalOpen,
       onModalClose,
+      imageFieldRef
     }}>
       {children}
     </AddNoteContext.Provider>

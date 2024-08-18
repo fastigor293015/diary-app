@@ -1,4 +1,4 @@
-import { AddNoteContext } from "@providers/AddNote";
+import { AddNoteContext } from "@providers";
 import { useContext } from "react";
 
 const useAddNote = () => useContext(AddNoteContext);

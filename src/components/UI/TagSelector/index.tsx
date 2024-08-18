@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import Input from "@components/UI/Input";
+import { useOutsideClickObserver } from "@hooks";
+import { Input } from "@components/UI";
+import { CloseIcon } from "@components/UI/icons";
+import { clsx } from "@utils";
 import tagsData from "@data/tags.json";
 import styles from "./TagSelector.module.css";
-import clsx from "@utils/clsx";
-import useOutsideClickObserver from "@hooks/useOutsideClickObserver";
-import CleanTextIcon from "@components/UI/icons/CloseIcon";
 
 interface TagSelectorProps extends React.HTMLAttributes<HTMLElement> {
   selectedTags: string[];
@@ -21,29 +21,36 @@ const TagSelector: React.FC<TagSelectorProps> = ({
   const [inputValue, setInputValue] = useState("");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const promptsList = tagsData.filter((tag) => !selectedTags.find((selectedTag) => selectedTag === tag) && tag.toLowerCase().includes(inputValue.toLowerCase()));
+  const promptsList = tagsData.filter(
+    (tag) =>
+      !selectedTags.find((selectedTag) => selectedTag === tag) &&
+      tag.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
   const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsOpened(true);
     setSelectedIndex(null);
     setInputValue(e.target.value);
-  }
+  };
 
-  const onTagAdd = useCallback((tag: string) => {
-    if (!isOpened) return;
-    onTagsChange([tag, ...selectedTags]);
-    setIsOpened(false);
-    setSelectedIndex(null);
-  }, [isOpened, selectedTags, onTagsChange]);
+  const onTagAdd = useCallback(
+    (tag: string) => {
+      if (!isOpened) return;
+      onTagsChange([tag, ...selectedTags]);
+      setIsOpened(false);
+      setSelectedIndex(null);
+    },
+    [isOpened, selectedTags, onTagsChange]
+  );
 
   const onTagRemove = (tag: string) => {
     onTagsChange(selectedTags.filter((item) => item !== tag));
-  }
+  };
 
   const onDropdownClose = () => {
     setIsOpened(false);
     setSelectedIndex(null);
-  }
+  };
 
   const ref = useOutsideClickObserver<HTMLDivElement>(onDropdownClose);
 
@@ -52,10 +59,14 @@ const TagSelector: React.FC<TagSelectorProps> = ({
       if (!isOpened) return;
       switch (e.key) {
         case "ArrowUp":
-          setSelectedIndex(prev => !prev ? promptsList.length - 1 : prev - 1);
+          setSelectedIndex((prev) =>
+            !prev ? promptsList.length - 1 : prev - 1
+          );
           break;
         case "ArrowDown":
-          setSelectedIndex(prev => prev === promptsList.length - 1 || prev === null ? 0 : prev + 1);
+          setSelectedIndex((prev) =>
+            prev === promptsList.length - 1 || prev === null ? 0 : prev + 1
+          );
           break;
         case "Enter":
           if (selectedIndex !== null) {
@@ -67,7 +78,7 @@ const TagSelector: React.FC<TagSelectorProps> = ({
         default:
           break;
       }
-    }
+    };
 
     document.addEventListener("keydown", keyDownHandler);
     return () => document.removeEventListener("keydown", keyDownHandler);
@@ -75,11 +86,17 @@ const TagSelector: React.FC<TagSelectorProps> = ({
 
   useEffect(() => {
     if (selectedIndex === null) return;
-    document.querySelector(`.${styles.promptItem}:nth-child(${selectedIndex + 1})`)?.scrollIntoView({ block: "center", behavior: "smooth" });
+    document
+      .querySelector(`.${styles.promptItem}:nth-child(${selectedIndex + 1})`)
+      ?.scrollIntoView({ block: "center", behavior: "smooth" });
   }, [selectedIndex]);
 
   return (
-    <div ref={ref} className={clsx(styles.tagSelector, className)} {...otherProps}>
+    <div
+      ref={ref}
+      className={clsx(styles.tagSelector, className)}
+      {...otherProps}
+    >
       <Input
         className={styles.input}
         type="text"
@@ -89,29 +106,43 @@ const TagSelector: React.FC<TagSelectorProps> = ({
         onClick={() => setIsOpened(true)}
         onFocus={() => setIsOpened(true)}
         onClear={() => setInputValue("")}
-      // onBlur={onDropdownClose}
+        // onBlur={onDropdownClose}
       />
-      {isOpened && promptsList.length > 0 && inputValue && <div className={styles.promptsDropdown}>
-        <div className={styles.promptsWrapper}>
-          <p className={clsx("descr", styles.promptsDescr)}>Нажми Enter для добавления тега</p>
-          <ul className={clsx("list", styles.promptsList)}>
-            {promptsList.map((prompt, index) => (
-              <li key={prompt} className={styles.promptItem}>
-                <button className={clsx("btn", styles.promptBtn, selectedIndex === index && styles.selected)} onClick={() => onTagAdd(prompt)}>
-                  {prompt}
-                </button>
-              </li>
-            ))}
-          </ul>
+      {isOpened && promptsList.length > 0 && inputValue && (
+        <div className={styles.promptsDropdown}>
+          <div className={styles.promptsWrapper}>
+            <p className={clsx("descr", styles.promptsDescr)}>
+              Нажми Enter для добавления тега
+            </p>
+            <ul className={clsx("list", styles.promptsList)}>
+              {promptsList.map((prompt, index) => (
+                <li key={prompt} className={styles.promptItem}>
+                  <button
+                    className={clsx(
+                      "btn",
+                      styles.promptBtn,
+                      selectedIndex === index && styles.selected
+                    )}
+                    onClick={() => onTagAdd(prompt)}
+                  >
+                    {prompt}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>}
+      )}
       {selectedTags.length > 0 && (
         <ul className={clsx("list", styles.selectedTagsList)}>
           {selectedTags.map((selectedTag) => (
             <li key={selectedTag} className={styles.selectedTagItem}>
               {selectedTag}
-              <button className={clsx("btn", styles.removeTagBtn)} onClick={() => onTagRemove(selectedTag)}>
-                <CleanTextIcon />
+              <button
+                className={clsx("btn", styles.removeTagBtn)}
+                onClick={() => onTagRemove(selectedTag)}
+              >
+                <CloseIcon />
               </button>
             </li>
           ))}
@@ -119,6 +150,6 @@ const TagSelector: React.FC<TagSelectorProps> = ({
       )}
     </div>
   );
-}
+};
 
 export default TagSelector;

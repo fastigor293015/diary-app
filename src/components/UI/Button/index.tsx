@@ -1,6 +1,6 @@
-import clsx from "@utils/clsx";
+import { IconProps } from "@components/UI/icons";
+import { clsx } from "@utils";
 import styles from "./Button.module.css";
-import { IconProps } from "@components/UI/icons/props";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   btnType?: "default" | "primary" | "secondary";
@@ -17,11 +17,22 @@ const Button: React.FC<ButtonProps> = ({
   ...otherProps
 }) => {
   return (
-    <button type={type} className={clsx("btn", styles.btn, btnType === "secondary" && styles.secondary, btnType === "default" && styles.default, Icon && !text && styles.iconBtn, className)} {...otherProps}>
+    <button
+      type={type}
+      className={clsx(
+        "btn",
+        styles.btn,
+        btnType === "secondary" && styles.secondary,
+        btnType === "default" && styles.default,
+        Icon && !text && styles.iconBtn,
+        className
+      )}
+      {...otherProps}
+    >
       {Icon && <Icon width="24" height="24" />}
       {text && text}
     </button>
   );
-}
+};
 
 export default Button;

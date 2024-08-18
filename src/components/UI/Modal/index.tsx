@@ -1,8 +1,8 @@
-import { createPortal } from "react-dom";
-import CloseIcon from "@components/UI/icons/CloseIcon";
-import clsx from "@utils/clsx";
-import styles from "./Modal.module.css";
 import { useEffect, useMemo } from "react";
+import { createPortal } from "react-dom";
+import { CloseIcon } from "@components/UI/icons";
+import { clsx } from "@utils";
+import styles from "./Modal.module.css";
 
 interface ModalProps extends React.HTMLAttributes<HTMLElement> {
   isOpen: boolean;
@@ -23,12 +23,15 @@ const Modal: React.FC<ModalProps> = ({
       if (isOpen && e.key === "Escape") {
         onClose();
       }
-    }
+    };
     document.addEventListener("keydown", keydownHandler);
     return () => document.removeEventListener("keydown", keydownHandler);
   }, [isOpen]);
 
-  const active = useMemo(() => isVisible === undefined ? isOpen : isVisible, [isOpen, isVisible]);
+  const active = useMemo(
+    () => (isVisible === undefined ? isOpen : isVisible),
+    [isOpen, isVisible]
+  );
 
   const root = document.getElementById("modal-root");
 
@@ -36,11 +39,14 @@ const Modal: React.FC<ModalProps> = ({
 
   return createPortal(
     isOpen && (
-      <div className={clsx(styles.bg, active && styles.active)} onClick={(e) => {
-        if (e.currentTarget === e.target) {
-          onClose();
-        }
-      }}>
+      <div
+        className={clsx(styles.bg, active && styles.active)}
+        onClick={(e) => {
+          if (e.currentTarget === e.target) {
+            onClose();
+          }
+        }}
+      >
         <div className={clsx(styles.container, className)} {...otherProps}>
           {children}
         </div>
@@ -51,6 +57,6 @@ const Modal: React.FC<ModalProps> = ({
     ),
     root
   );
-}
+};
 
 export default Modal;

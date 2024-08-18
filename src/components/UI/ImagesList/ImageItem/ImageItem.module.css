@@ -1,0 +1,28 @@
+.item.isVertical {
+  grid-row: 2 span;
+}
+
+.itemBtn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.activeBtnBg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bw-gray-20);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.itemImg {
+  width: 100%;
+  height: 100%;
+}

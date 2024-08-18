@@ -1,11 +1,7 @@
-import useCurPage from "@hooks/useCurPage";
-import AddNote from "@components/AddNote";
-import Header from "./components/Header";
-import Content from "@components/Content";
-import Footer from "@components/Footer";
+import { useCurPage } from "@hooks";
+import { AddNote, Content, Footer, Header, ImagesModal } from "@components";
+import { clsx } from "@utils";
 import { Pages } from "@constants";
-import clsx from "@utils/clsx";
-import ImagesModal from "@components/ImagesModal";
 
 function App() {
   const { page } = useCurPage();
@@ -25,7 +21,7 @@ function App() {
       </div>
       <ImagesModal />
     </div>
-  )
+  );
 }
 
 export default App;
