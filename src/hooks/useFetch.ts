@@ -6,10 +6,18 @@ const useFetch = <T>(url: string, options?: RequestInit) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setError(null);
     setLoading(true);
     fetch(url, options)
       .then((res) => res.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        if (data?.errors) {
+          setError(data?.errors[0]);
+          setData(null);
+        } else {
+          setData(data);
+        }
+      })
       .catch((err) => {
         console.log(err);
         setError(err);
