@@ -14,11 +14,7 @@ const ImagesModal: React.FC<ImagesModalProps> = () => {
   const { isReached, containerRef } = useScroll(20);
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 500);
-  const {
-    data: imagesList,
-    loading,
-    error,
-  } = useFetch<SplineApiResponse>(
+  const { data: imagesList, loading } = useFetch<SplineApiResponse>(
     `https://api.unsplash.com${debouncedQuery && "/search"}/photos?per_page=10${
       debouncedQuery ? `&query=${debouncedQuery}` : ""
     }`,
