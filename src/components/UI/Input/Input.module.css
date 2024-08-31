@@ -12,7 +12,7 @@
   color: inherit;
   background: var(--bw-white);
   box-shadow: var(--shadow);
-  transition: border-color .2s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
 }
 
 .input:hover {
@@ -37,7 +37,7 @@
   right: 18px;
   color: var(--bw-gray-40);
   transform: translateY(-50%);
-  transition: color .2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 .clearBtn:hover {

@@ -1,15 +1,20 @@
 import { forwardRef } from "react";
-import { ImageIcon } from "@components/UI/icons";
+import { DeleteIcon, ImageIcon } from "@components/UI/icons";
 import { clsx } from "@utils";
 import styles from "./Image.module.css";
 
 interface ImageProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  ref?: React.LegacyRef<HTMLButtonElement>;
   imgSrc: string | null;
+  onImgDelete: () => void;
 }
 
 const Image = forwardRef<HTMLButtonElement, ImageProps>((props, ref) => {
-  const { imgSrc, className, ...otherProps } = props;
+  const { imgSrc, className, onImgDelete, ...otherProps } = props;
+
+  const onDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onImgDelete();
+  };
 
   return (
     <button
@@ -18,7 +23,16 @@ const Image = forwardRef<HTMLButtonElement, ImageProps>((props, ref) => {
       className={clsx("btn", styles.btn, className)}
       {...otherProps}
     >
-      {imgSrc ? <img src={imgSrc} alt="Картинка" /> : <ImageIcon />}
+      {imgSrc ? (
+        <>
+          <img src={imgSrc} alt="Картинка" />
+          <button className={clsx("btn", styles.deleteBtn)} onClick={onDelete}>
+            <DeleteIcon />
+          </button>
+        </>
+      ) : (
+        <ImageIcon />
+      )}
     </button>
   );
 });

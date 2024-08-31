@@ -64,6 +64,11 @@ const AddNote = () => {
             ref={imageFieldRef}
             imgSrc={data.image}
             onClick={onModalOpen}
+            onImgDelete={() =>
+              onChange({
+                image: null,
+              })
+            }
           />
           <TagSelector
             selectedTags={data.tags}
