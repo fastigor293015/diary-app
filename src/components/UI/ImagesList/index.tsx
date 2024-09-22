@@ -1,4 +1,4 @@
-import { ImageItem } from "@components/UI";
+import ImageItem from "./ImageItem";
 import { clsx } from "@utils";
 import styles from "./ImagesList.module.css";
 

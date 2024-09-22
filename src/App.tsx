@@ -1,25 +1,20 @@
-import { useCurPage } from "@hooks";
-import { AddNote, Content, Footer, Header, ImagesModal } from "@components";
-import { clsx } from "@utils";
+import { useEffect } from "react";
+import { useAppSelector } from "@hooks";
 import { Pages } from "@constants";
+import { CreateNote, Main } from "@pages";
 
 function App() {
-  const { page } = useCurPage();
+  const page = useAppSelector((state) => state.curPage.page);
+  const notesList = useAppSelector((state) => state.notes.list);
+
+  useEffect(() => {
+    console.log(notesList);
+  }, [notesList]);
 
   return (
     <div className="app">
-      <div className={clsx("container")}>
-        <Header />
-        <main>
-          {page === Pages.main ? (
-            <Content />
-          ) : page === Pages.createNote ? (
-            <AddNote />
-          ) : null}
-        </main>
-        <Footer />
-      </div>
-      <ImagesModal />
+      {page === Pages.main && <Main />}
+      {page === Pages.createNote && <CreateNote />}
     </div>
   );
 }

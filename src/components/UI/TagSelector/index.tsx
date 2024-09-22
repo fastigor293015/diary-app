@@ -3,17 +3,18 @@ import { useOutsideClickObserver } from "@hooks";
 import { Input } from "@components/UI";
 import { CloseIcon } from "@components/UI/icons";
 import { clsx } from "@utils";
-import tagsData from "@data/tags.json";
 import styles from "./TagSelector.module.css";
 
 interface TagSelectorProps extends React.HTMLAttributes<HTMLElement> {
   selectedTags: string[];
   onTagsChange: (value: string[]) => void;
+  prompts: string[];
 }
 
 const TagSelector: React.FC<TagSelectorProps> = ({
   selectedTags,
   onTagsChange,
+  prompts = [],
   className,
   ...otherProps
 }) => {
@@ -21,16 +22,21 @@ const TagSelector: React.FC<TagSelectorProps> = ({
   const [inputValue, setInputValue] = useState("");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const promptsList = tagsData.filter(
+  const isDuplicate = (tag: string) =>
+    selectedTags.some((selectedTag) => selectedTag === tag);
+
+  const promptsList = prompts.filter(
     (tag) =>
-      !selectedTags.find((selectedTag) => selectedTag === tag) &&
-      tag.toLowerCase().includes(inputValue.toLowerCase())
+      !isDuplicate(tag) && tag.toLowerCase().includes(inputValue.toLowerCase())
   );
 
   const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
     setIsOpened(true);
     setSelectedIndex(null);
-    setInputValue(e.target.value);
+    setInputValue(
+      newValue && !newValue.includes("#") ? "#" + newValue : newValue
+    );
   };
 
   const onTagAdd = useCallback(
@@ -39,6 +45,7 @@ const TagSelector: React.FC<TagSelectorProps> = ({
       onTagsChange([tag, ...selectedTags]);
       setIsOpened(false);
       setSelectedIndex(null);
+      setInputValue("");
     },
     [isOpened, selectedTags, onTagsChange]
   );
@@ -71,7 +78,7 @@ const TagSelector: React.FC<TagSelectorProps> = ({
         case "Enter":
           if (selectedIndex !== null) {
             onTagAdd(promptsList[selectedIndex]);
-          } else if (inputValue.length) {
+          } else if (inputValue.length && !isDuplicate(inputValue)) {
             onTagAdd(inputValue);
           }
           break;
@@ -106,7 +113,6 @@ const TagSelector: React.FC<TagSelectorProps> = ({
         onClick={() => setIsOpened(true)}
         onFocus={() => setIsOpened(true)}
         onClear={() => setInputValue("")}
-        // onBlur={onDropdownClose}
       />
       {isOpened && promptsList.length > 0 && inputValue && (
         <div className={styles.promptsDropdown}>
@@ -118,6 +124,7 @@ const TagSelector: React.FC<TagSelectorProps> = ({
               {promptsList.map((prompt, index) => (
                 <li key={prompt} className={styles.promptItem}>
                   <button
+                    type="button"
                     className={clsx(
                       "btn",
                       styles.promptBtn,
@@ -139,6 +146,7 @@ const TagSelector: React.FC<TagSelectorProps> = ({
             <li key={selectedTag} className={styles.selectedTagItem}>
               {selectedTag}
               <button
+                type="button"
                 className={clsx("btn", styles.removeTagBtn)}
                 onClick={() => onTagRemove(selectedTag)}
               >

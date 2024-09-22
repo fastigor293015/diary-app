@@ -20,18 +20,22 @@ const Image = forwardRef<HTMLButtonElement, ImageProps>((props, ref) => {
     <button
       ref={ref}
       type="button"
-      className={clsx("btn", styles.btn, className)}
+      className={clsx("btn", styles.btn, imgSrc && styles.hasValue, className)}
       {...otherProps}
     >
+      <img src={imgSrc || "/images/theme.jpg"} alt="Картинка" />
       {imgSrc ? (
         <>
-          <img src={imgSrc} alt="Картинка" />
-          <button className={clsx("btn", styles.deleteBtn)} onClick={onDelete}>
+          <div
+            className={clsx("btn", styles.deleteBtn)}
+            onClick={onDelete}
+            tabIndex={0}
+          >
             <DeleteIcon />
-          </button>
+          </div>
         </>
       ) : (
-        <ImageIcon />
+        <ImageIcon className={styles.imageIcon} />
       )}
     </button>
   );

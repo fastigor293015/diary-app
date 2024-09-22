@@ -1,3 +1,19 @@
+import { emojis } from "@constants";
+
+export type EmojiValue = (typeof emojis)[number] | null;
+
+export interface NoteData {
+  id: string;
+  title: string;
+  description: string;
+  date: string | number;
+  emoji: EmojiValue | null;
+  image: string | null;
+  tags: string[];
+}
+
+export type FormValues = Omit<NoteData, "id">;
+
 export interface SplineImageType {
   id: string;
   created_at: string;

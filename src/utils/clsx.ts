@@ -1,10 +1,4 @@
-const clsx = (
-  ...classNames: (string | boolean | null | undefined)[]
-): string => {
-  // Очищаем массив от значений undefined и false
-  const classesList = [...classNames].filter((item) => item);
-
-  return classesList.join(' ');
-};
+const clsx = (...classNames: (string | boolean | null | undefined)[]): string =>
+  classNames.filter((item) => item).join(" ");
 
 export default clsx;

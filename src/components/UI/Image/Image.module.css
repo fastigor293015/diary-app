@@ -1,26 +1,33 @@
 .btn {
+  --img-filter-hover: opacity(60%);
+  --img-filter-active: opacity(80%);
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
   color: var(--bw-gray-40);
-  background: var(--yellow-light-40);
   box-shadow: var(--shadow);
   overflow: hidden;
   cursor: pointer;
-  transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 .btn:hover,
 .btn:focus {
   color: var(--bw-gray-60);
-  background: var(--yellow-light-60);
 }
 
 .btn:active {
-  color: var(--bw-gray-60);
-  background: var(--yellow-dark-1);
+  color: var(--bw-gray-80);
+}
+
+.btn img {
+  filter: opacity(40%);
+}
+
+.btn.hasValue img {
+  filter: none;
 }
 
 .btn img {
@@ -31,11 +38,29 @@
 
 .btn:hover img,
 .btn:focus img {
-  filter: brightness(80%);
+  color: var(--bw-gray-60);
+  filter: var(--img-filter-hover);
 }
 
 .btn:active img {
-  filter: brightness(60%);
+  color: var(--bw-gray-80);
+  filter: var(--img-filter-active);
+}
+
+.btn.hasValue:hover img,
+.btn.hasValue:focus img {
+  --img-filter-hover: brightness(80%);
+}
+
+.btn.hasValue:active img {
+  --img-filter-active: brightness(60%);
+}
+
+.imageIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .deleteBtn {
@@ -67,6 +92,8 @@
 .deleteBtn:hover,
 .deleteBtn:focus {
   background: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  pointer-events: all;
 }
 
 .deleteBtn:active {

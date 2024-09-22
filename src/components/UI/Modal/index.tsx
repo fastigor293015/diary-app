@@ -19,8 +19,10 @@ const Modal: React.FC<ModalProps> = ({
   ...otherProps
 }) => {
   useEffect(() => {
-    document.getElementById("root")!.inert = isOpen;
+    document.getElementById("root")!.inert = isVisible!;
+  }, [isVisible]);
 
+  useEffect(() => {
     const keydownHandler = (e: KeyboardEvent) => {
       if (isOpen && e.key === "Escape") {
         onClose();

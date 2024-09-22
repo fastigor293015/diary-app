@@ -1,0 +1,89 @@
+.link {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.dateBlock {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  background: var(--transparent-white-p60);
+}
+
+.dateBlock span {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.emojiBlock {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.333;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  background: var(--transparent-white-p60);
+}
+
+.textBlock {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 12px 12px 8px;
+  border-radius: 10px;
+  background: var(--transparent-white-p90);
+  box-shadow: var(--shadow);
+}
+
+.title {
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.descr {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  hyphens: auto;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.286;
+}

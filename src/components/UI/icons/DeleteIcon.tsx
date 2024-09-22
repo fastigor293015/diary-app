@@ -15,10 +15,10 @@ const DeleteIcon: React.FC<IconProps> = (props) => {
         <clipPath id="clip8_926">
           <rect
             id="icon delete"
-            rx="-0.500000"
+            rx="0.5"
             width="15"
             height="15"
-            transform="translate(0.500000 0.500000)"
+            transform="translate(0.5 0.5)"
             fill="white"
             fillOpacity="0"
           />
@@ -26,10 +26,10 @@ const DeleteIcon: React.FC<IconProps> = (props) => {
       </defs>
       <rect
         id="icon delete"
-        rx="-0.500000"
+        rx="0.5"
         width="15"
         height="15"
-        transform="translate(0.500000 0.500000)"
+        transform="translate(0.5 0.5)"
         fill="#FFFFFF"
         fillOpacity="0"
       />

@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 1280px;
+  max-width: 1500px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.main {
+  padding: 20px 0;
+}

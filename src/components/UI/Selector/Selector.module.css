@@ -17,7 +17,7 @@
   color: var(--bw-gray-40);
   background: var(--bw-white);
   box-shadow: var(--shadow);
-  transition: color .2s ease-in-out, border-color .2s ease-in-out;
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .toggleBtn:hover,
@@ -28,7 +28,7 @@
 
 .chevronIcon {
   transform-style: preserve-3d;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .selector.opened .toggleBtn {
@@ -44,13 +44,14 @@
   top: calc(100% + 12px);
   right: 0;
   padding: 12px;
+  border: 1px solid var(--bw-gray-20);
   border-radius: 12px;
   background: var(--bw-white);
   box-shadow: var(--shadow);
   transform: translateY(50px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .2s ease-in-out, transform .2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .selector.opened .dropdownMenu {
@@ -74,7 +75,7 @@
   border: 1px solid var(--bw-gray-2);
   border-radius: 12px;
   background: var(--bw-gray-2);
-  transition: border-color .2s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
 }
 
 .emojiBtn:hover,
@@ -88,4 +89,8 @@
 
 .removeBtn {
   margin-top: 10px;
+}
+
+.removeBtn.notSelected {
+  color: var(--bw-gray-40);
 }

@@ -4,7 +4,6 @@ import styles from "./Calendar.module.css";
 
 interface CalendarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string | number;
-  // onChange: (newValue: string | Date | number) => void;
 }
 
 const Calendar: React.FC<CalendarProps> = ({

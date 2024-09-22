@@ -28,7 +28,11 @@ const Input: React.FC<InputProps> = ({
         {...otherProps}
       />
       {onClear && value && (
-        <button className={clsx("btn", styles.clearBtn)} onClick={onClear}>
+        <button
+          type="button"
+          className={clsx("btn", styles.clearBtn)}
+          onClick={onClear}
+        >
           <CloseIcon width="24" height="24" />
         </button>
       )}

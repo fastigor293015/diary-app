@@ -1,0 +1,22 @@
+.tagsList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tagsItem {
+  flex-shrink: 0;
+  padding: 4px 8px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--transparent-gray20-p60);
+  backdrop-filter: opacity(60%);
+}

@@ -1,12 +1,10 @@
-import { useRef, useState } from "react";
-import { useOutsideClickObserver } from "@hooks";
+import { useOutsideClickObserver, useTransition } from "@hooks";
 import { Button } from "@components/UI";
 import { ChevronDownIcon, CleanIcon, EmojiIcon } from "@components/UI/icons";
 import { clsx } from "@utils";
 import { emojis } from "@constants";
+import { EmojiValue } from "@types";
 import styles from "./Selector.module.css";
-
-export type EmojiValue = (typeof emojis)[number] | null;
 
 interface SelectorProps
   extends Omit<React.HTMLAttributes<HTMLElement>, "onChange"> {
@@ -20,23 +18,8 @@ const Selector: React.FC<SelectorProps> = ({
   onChange,
   ...otherProps
 }) => {
-  const [isOpened, setIsOpened] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
+  const { isOpen, isVisible, onOpen, onClose } = useTransition();
   const ref = useOutsideClickObserver<HTMLDivElement>(() => onClose());
-
-  const onOpen = () => {
-    setIsOpened(true);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setIsVisible(true));
-  };
-
-  const onClose = () => {
-    setIsVisible(false);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setIsOpened(false), 200);
-  };
 
   const onSelect = (value: EmojiValue) => {
     onChange(value);
@@ -52,12 +35,12 @@ const Selector: React.FC<SelectorProps> = ({
       <button
         type="button"
         className={clsx("btn", styles.toggleBtn)}
-        onClick={() => (isOpened ? onClose() : onOpen())}
+        onClick={() => (isOpen ? onClose() : onOpen())}
       >
         {value || <EmojiIcon />}
         <ChevronDownIcon className={styles.chevronIcon} />
       </button>
-      {isOpened && (
+      {isOpen && (
         <div className={clsx(styles.dropdownMenu)}>
           <ul className={clsx("list", styles.emojiList)}>
             {emojis.map((item) => (
@@ -79,7 +62,7 @@ const Selector: React.FC<SelectorProps> = ({
           <Button
             type="button"
             btnType="default"
-            className={styles.removeBtn}
+            className={clsx(styles.removeBtn, !value && styles.notSelected)}
             icon={CleanIcon}
             text="Убрать эмоцию"
             onClick={() => onSelect(null)}
